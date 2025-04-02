@@ -1,0 +1,407 @@
+[
+  {
+    "id": 1,
+    "username": "ProGamerX",
+    "platform": "Twitch",
+    "followers": 120000,
+    "engagementRate": 8.2,
+    "contentCategories": ["FPS", "Battle Royale"],
+    "avgViewers": 5400,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 45,
+        "25-34": 30,
+        "35+": 25
+      },
+      "gender": {
+        "male": 75,
+        "female": 22,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 87,
+    "hourlyRate": 250,
+    "location": "US-West",
+    "verified": true,
+    "sponsorshipHistory": ["GameEnergy", "HeadsetPro", "GamerFuel"],
+    "contentFormats": ["Live Gameplay", "Tutorials", "Reviews"]
+  },
+  {
+    "id": 2,
+    "username": "RetroQueen",
+    "platform": "YouTube",
+    "followers": 450000,
+    "engagementRate": 6.8,
+    "contentCategories": ["Retro", "RPG", "Strategy"],
+    "avgViewers": 62000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 25,
+        "25-34": 45,
+        "35+": 30
+      },
+      "gender": {
+        "male": 60,
+        "female": 37,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 92,
+    "hourlyRate": 380,
+    "location": "US-East",
+    "verified": true,
+    "sponsorshipHistory": ["RetroCollector", "GamePass", "MechKeyboards"],
+    "contentFormats": ["Analysis", "Let's Play", "Collections"]
+  },
+  {
+    "id": 3,
+    "username": "SpeedRunLegend",
+    "platform": "YouTube",
+    "followers": 280000,
+    "engagementRate": 7.5,
+    "contentCategories": ["Platformer", "Speedrun", "Indie"],
+    "avgViewers": 32000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 35,
+        "25-34": 40,
+        "35+": 25
+      },
+      "gender": {
+        "male": 65,
+        "female": 32,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 75,
+    "hourlyRate": 220,
+    "location": "EU-Central",
+    "verified": true,
+    "sponsorshipHistory": ["SpeedTech", "EnergyDrink", "GamingGloves"],
+    "contentFormats": ["Speedruns", "Tutorials", "Challenge Runs"]
+  },
+  {
+    "id": 4,
+    "username": "TikTokGamer",
+    "platform": "TikTok",
+    "followers": 1200000,
+    "engagementRate": 12.4,
+    "contentCategories": ["Mobile", "Casual", "FPS"],
+    "avgViewers": 150000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 60,
+        "25-34": 30,
+        "35+": 10
+      },
+      "gender": {
+        "male": 55,
+        "female": 42,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 90,
+    "hourlyRate": 600,
+    "location": "APAC",
+    "verified": true,
+    "sponsorshipHistory": ["MobileGames", "AppStore", "PhoneBrand"],
+    "contentFormats": ["Short Clips", "Reactions", "Challenges"]
+  },
+  {
+    "id": 5,
+    "username": "MOBAmaster",
+    "platform": "Twitch",
+    "followers": 320000,
+    "engagementRate": 9.1,
+    "contentCategories": ["MOBA", "Strategy", "Multiplayer"],
+    "avgViewers": 14500,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 40,
+        "25-34": 45,
+        "35+": 15
+      },
+      "gender": {
+        "male": 70,
+        "female": 27,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 83,
+    "hourlyRate": 400,
+    "location": "US-East",
+    "verified": true,
+    "sponsorshipHistory": ["ESL", "GamingMonitor", "KeyboardBrand"],
+    "contentFormats": ["Pro Matches", "Coaching", "Meta Analysis"]
+  },
+  {
+    "id": 6,
+    "username": "VRexplorer",
+    "platform": "YouTube",
+    "followers": 180000,
+    "engagementRate": 5.3,
+    "contentCategories": ["VR", "Simulation", "Indie"],
+    "avgViewers": 22000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 30,
+        "25-34": 50,
+        "35+": 20
+      },
+      "gender": {
+        "male": 65,
+        "female": 30,
+        "other": 5
+      }
+    },
+    "previousCampaignPerformance": 69,
+    "hourlyRate": 275,
+    "location": "EU-North",
+    "verified": false,
+    "sponsorshipHistory": ["VRHeadset", "PCHardware", "VRgame"],
+    "contentFormats": ["Reviews", "Gameplay", "Tech Demos"]
+  },
+  {
+    "id": 7,
+    "username": "CozyGamersClub",
+    "platform": "Twitch",
+    "followers": 95000,
+    "engagementRate": 11.2,
+    "contentCategories": ["Cozy", "Life Sim", "Indie"],
+    "avgViewers": 4200,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 35,
+        "25-34": 45,
+        "35+": 20
+      },
+      "gender": {
+        "male": 40,
+        "female": 57,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 95,
+    "hourlyRate": 175,
+    "location": "US-Central",
+    "verified": false,
+    "sponsorshipHistory": ["IndiePublisher", "MerchStore", "GameSubscription"],
+    "contentFormats": ["Let's Play", "First Impressions", "Relaxing Streams"]
+  },
+  {
+    "id": 8,
+    "username": "TacticalPlayer",
+    "platform": "YouTube",
+    "followers": 520000,
+    "engagementRate": 7.8,
+    "contentCategories": ["Tactical", "FPS", "Military Sim"],
+    "avgViewers": 89000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 25,
+        "25-34": 50,
+        "35+": 25
+      },
+      "gender": {
+        "male": 80,
+        "female": 17,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 81,
+    "hourlyRate": 450,
+    "location": "EU-West",
+    "verified": true,
+    "sponsorshipHistory": ["GamingPeripherals", "TacticalGear", "ControllerBrand"],
+    "contentFormats": ["Strategy Guides", "Gameplay", "Weapon Analysis"]
+  },
+  {
+    "id": 9,
+    "username": "GameDevDiaries",
+    "platform": "YouTube",
+    "followers": 380000,
+    "engagementRate": 9.4,
+    "contentCategories": ["Game Dev", "Indie", "Review"],
+    "avgViewers": 42000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 20,
+        "25-34": 55,
+        "35+": 25
+      },
+      "gender": {
+        "male": 70,
+        "female": 25,
+        "other": 5
+      }
+    },
+    "previousCampaignPerformance": 78,
+    "hourlyRate": 320,
+    "location": "APAC",
+    "verified": true,
+    "sponsorshipHistory": ["GameEngine", "AssetStore", "DevConference"],
+    "contentFormats": ["Devlogs", "Tutorials", "Reviews"]
+  },
+  {
+    "id": 10,
+    "username": "TikTokSpeedRunner",
+    "platform": "TikTok",
+    "followers": 750000,
+    "engagementRate": 14.2,
+    "contentCategories": ["Speedrun", "Mobile", "Platformer"],
+    "avgViewers": 98000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 65,
+        "25-34": 25,
+        "35+": 10
+      },
+      "gender": {
+        "male": 60,
+        "female": 37,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 86,
+    "hourlyRate": 480,
+    "location": "US-West",
+    "verified": true,
+    "sponsorshipHistory": ["EnergyDrink", "GamingGear", "StreamSetup"],
+    "contentFormats": ["Quick Tips", "Glitch Demos", "Short Speedruns"]
+  },
+  {
+    "id": 11,
+    "username": "RPGadventures",
+    "platform": "Twitch",
+    "followers": 210000,
+    "engagementRate": 8.6,
+    "contentCategories": ["RPG", "Open World", "Story"],
+    "avgViewers": 8900,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 30,
+        "25-34": 45,
+        "35+": 25
+      },
+      "gender": {
+        "male": 55,
+        "female": 42,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 82,
+    "hourlyRate": 300,
+    "location": "US-South",
+    "verified": true,
+    "sponsorshipHistory": ["RPGPublisher", "MerchStore", "DiceCompany"],
+    "contentFormats": ["Story Playthroughs", "Character Builds", "Lore Discussions"]
+  },
+  {
+    "id": 12,
+    "username": "StreamerComedy",
+    "platform": "Twitch",
+    "followers": 430000,
+    "engagementRate": 10.3,
+    "contentCategories": ["Variety", "Just Chatting", "Casual"],
+    "avgViewers": 21000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 40,
+        "25-34": 40,
+        "35+": 20
+      },
+      "gender": {
+        "male": 60,
+        "female": 38,
+        "other": 2
+      }
+    },
+    "previousCampaignPerformance": 88,
+    "hourlyRate": 425,
+    "location": "EU-South",
+    "verified": true,
+    "sponsorshipHistory": ["StreamingPlatform", "AudioEquipment", "FoodDelivery"],
+    "contentFormats": ["Reaction Content", "Comedy Skits", "Game Shows"]
+  },
+  {
+    "id": 13,
+    "username": "CompetitiveCoach",
+    "platform": "YouTube",
+    "followers": 290000,
+    "engagementRate": 6.2,
+    "contentCategories": ["Esports", "FPS", "Competitive"],
+    "avgViewers": 32000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 55,
+        "25-34": 35,
+        "35+": 10
+      },
+      "gender": {
+        "male": 85,
+        "female": 13,
+        "other": 2
+      }
+    },
+    "previousCampaignPerformance": 76,
+    "hourlyRate": 350,
+    "location": "US-West",
+    "verified": false,
+    "sponsorshipHistory": ["EsportsOrg", "ControllerCompany", "TournamentPlatform"],
+    "contentFormats": ["Coaching", "VOD Reviews", "Pro Analysis"]
+  },
+  {
+    "id": 14,
+    "username": "MobileGamingPro",
+    "platform": "TikTok",
+    "followers": 980000,
+    "engagementRate": 13.1,
+    "contentCategories": ["Mobile", "MOBA", "Battle Royale"],
+    "avgViewers": 120000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 50,
+        "25-34": 35,
+        "35+": 15
+      },
+      "gender": {
+        "male": 65,
+        "female": 32,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 91,
+    "hourlyRate": 550,
+    "location": "APAC",
+    "verified": true,
+    "sponsorshipHistory": ["MobileGameDev", "PhoneManufacturer", "AppStore"],
+    "contentFormats": ["Quick Tips", "Mobile Setup", "Tournament Highlights"]
+  },
+  {
+    "id": 15,
+    "username": "GamingHistorian",
+    "platform": "YouTube",
+    "followers": 410000,
+    "engagementRate": 7.9,
+    "contentCategories": ["Retro", "Documentary", "History"],
+    "avgViewers": 58000,
+    "audienceDemographics": {
+      "age": {
+        "18-24": 20,
+        "25-34": 40,
+        "35+": 40
+      },
+      "gender": {
+        "male": 75,
+        "female": 22,
+        "other": 3
+      }
+    },
+    "previousCampaignPerformance": 84,
+    "hourlyRate": 390,
+    "location": "EU-Central",
+    "verified": false,
+    "sponsorshipHistory": ["RetroConsole", "GameMuseum", "CollectiblesStore"],
+    "contentFormats": ["Documentaries", "Retrospectives", "Interviews"]
+  }
+]

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Branding colors */
+:root {
+  --brand-purple: 104, 89, 234; /* #6859ea */
+  --brand-teal: 34, 211, 238; /* #22d3ee */
+}
