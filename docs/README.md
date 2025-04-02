@@ -4,7 +4,7 @@
 
 This take-home project asks you to build a "Creator Match" dashboard - a tool that helps brands find suitable gaming influencers for their marketing campaigns across platforms like Twitch, YouTube, and TikTok.
 
-The project should take approximately 1-2 hours to complete and tests your ability to work with:
+The project should take a few hours to complete and tests your ability to work with:
 - Vue.js frontend development with Tailwind CSS
 - Node.js backend API implementation
 - Data filtering and processing algorithms
@@ -106,7 +106,7 @@ Your submission will be evaluated based on:
 
 Please submit via email:
 1. Your complete codebase (excluding node_modules)
-2. A brief write-up (< 1 page) explaining your approach and any decisions/tradeoffs you made
+2. A brief write-up explaining your approach and any decisions/tradeoffs you made
 3. A section on potential future improvements you would make to the project
 4. Instructions for running your solution if different from what's provided
 
