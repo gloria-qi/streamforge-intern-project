@@ -10,6 +10,7 @@ const props = defineProps({
 
 // TODO: Implement computed properties and helper functions to format data
 // For example, format large follower numbers, calculate match score width, etc.
+
 // Format large numbers with K/M suffix
 const formatNumber = (num) => {
   if (num >= 1000000) {

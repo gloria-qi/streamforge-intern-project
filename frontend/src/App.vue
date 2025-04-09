@@ -10,14 +10,25 @@ import CampaignSettings from './components/CampaignSettings.vue';
 
 // State
 const creators = ref([]);
+const loading = ref(true);
+const error = ref(null);
+const selectedCreator = ref(null);
+const showCreatorDetail = ref(false);
+const activeTab = ref('campaign'); // 'filters' or 'campaign'
 const filters = ref({
   platforms: [],
   categories: [],
   followerRange: [0, 2000000],
+  engagementRateMin: 0,
+  verifiedOnly: false,
+  regions: []
 });
 const campaignSettings = ref({
   budget: [0, 1000],
   targetGenres: [],
+  targetAgeGroups: [],
+  targetGenders:[],
+  campaignObjective: 'brand_awareness',
   duration: 30
 });
 const sortBy = ref('matchScore');
@@ -40,7 +51,51 @@ const availableCategories = computed(() => {
 
 const filteredCreators = computed(() => {
   // Filtering is now handled by the backend API
-  return creators.value;
+  if (loading.value) return [];
+  let result = [...creators.value];
+
+  // apply platform filter
+  if (filters.value.platforms.length > 0) {
+    result = result.filter(creator => 
+      filters.value.platforms.includes(creator.platform)
+    );
+  }
+  
+  // apply categories filter
+  if (filters.value.categories.length > 0) {
+    result = result.filter(creator => 
+      creator.contentCategories.some(category => 
+        filters.value.categories.includes(category)
+      )
+    );
+  }
+  
+  // apply follower range filter
+  const [minFollowers, maxFollowers] = filters.value.followerRange;
+  result = result.filter(creator => 
+    creator.followers >= minFollowers && creator.followers <= maxFollowers
+  );
+  
+  // apply engagement rate filter
+  if (filters.value.engagementRateMin > 0) {
+    result = result.filter(creator => 
+      creator.engagementRate >= filters.value.engagementRateMin
+    );
+  }
+  
+  // apply verified filter
+  if (filters.value.verifiedOnly) {
+    result = result.filter(creator => creator.verified);
+  }
+  
+  // apply regions filter
+  if (filters.value.regions.length > 0) {
+    result = result.filter(creator => 
+      filters.value.regions.includes(creator.location)
+    );
+  }
+  
+  return result;
 });
 
 const sortedCreators = computed(() => {
@@ -58,6 +113,10 @@ const sortedCreators = computed(() => {
 });
 
 // Methods
+function setActiveTab(tab) {
+  activeTab.value = tab;
+}
+
 async function updateFilters(newFilters) {
   filters.value = { ...filters.value, ...newFilters };
   try {
@@ -72,11 +131,17 @@ async function updateFilters(newFilters) {
 async function updateCampaignSettings(newSettings) {
   campaignSettings.value = { ...campaignSettings.value, ...newSettings };
   try {
+    loading.value = true; //safeguard for if data is still loading
+    error.value = null;
+
     // Call the match API with the updated campaign settings
     const response = await axios.post('http://localhost:3000/api/match', campaignSettings.value);
     creators.value = response.data;
   } catch (error) {
     console.error('Error updating match scores:', error);
+    error.value = 'Failed to update match scores. Please try again.';
+  } finally {
+    loading.value = false;
   }
 }
 
@@ -89,36 +154,91 @@ function resetFilters() {
     platforms: [],
     categories: [],
     followerRange: [0, 2000000],
+    engagementRateMin: 0,
+    verifiedOnly: false,
+    regions: []
   };
+}
+
+function openCreatorDetail(creator) {
+  selectedCreator.value = creator;
+  showCreatorDetail.value = true;
 }
 
 // Lifecycle
 onMounted(async () => {
   try {
+    loading.value = true; //safeguard for if data is still loading
+    error.value = null;
+
     // Fetch creators from API
-    const response = await axios.get('http://localhost:3000/api/creators');
+    const response = await axios.post('http://localhost:3000/api/creators',campaignSettings.value);
     creators.value = response.data;
   } catch (error) {
     console.error('Error fetching creators:', error);
+    error.value = 'Failed to load creators. Please refresh the page.';
+  } finally {
+    loading.value = false;
   }
 });
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col min-h-screen bg-gray-100">
     <AppHeader />
     
     <main class="flex-grow container mx-auto p-4">
+      <!-- Creator detail modal -->
+      <div v-if="showCreatorDetail && selectedCreator" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center overflow-auto p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          <div class="p-4 border-b flex justify-between items-center">
+            <h2 class="text-xl font-bold">Creator Details</h2>
+            <button @click="closeCreatorDetail" class="text-2xl">&times;</button>
+          </div>
+          <div class="p-4">
+            <CreatorDetail 
+              :creator="selectedCreator" 
+              :campaignSettings="campaignSettings"
+            />
+          </div>
+        </div>
+      </div>
+    
       <div class="flex flex-col md:flex-row gap-6">
-        <!-- Sidebar with filters -->
+        <!-- Sidebar with tabbed interface -->
         <div class="w-full md:w-1/4">
-          <FilterSidebar 
-            :platforms="availablePlatforms"
-            :categories="availableCategories"
-            @filter-change="updateFilters"
-          />
+          <!-- Tab navigation -->
+          <div class="flex border-b border-gray-200 mb-4">
+            <button 
+              @click="setActiveTab('filters')" 
+              class="py-2 px-4 font-medium text-sm transition-colors duration-200 border-b-2 -mb-px"
+              :class="activeTab === 'filters' 
+                ? 'border-brand-purple text-brand-purple' 
+                : 'border-transparent text-gray-500 hover:text-gray-700'"
+            >
+              Filters
+            </button>
+            <button 
+              @click="setActiveTab('campaign')" 
+              class="py-2 px-4 font-medium text-sm transition-colors duration-200 border-b-2 -mb-px"
+              :class="activeTab === 'campaign' 
+                ? 'border-brand-purple text-brand-purple' 
+                : 'border-transparent text-gray-500 hover:text-gray-700'"
+            >
+              Campaign Settings
+            </button>
+          </div>
           
-          <div class="mt-6">
+          <!-- Tab content -->
+          <div v-if="activeTab === 'filters'">
+            <FilterSidebar 
+              :platforms="availablePlatforms"
+              :categories="availableCategories"
+              @filter-change="updateFilters"
+            />
+          </div>
+          
+          <div v-if="activeTab === 'campaign'">
             <CampaignSettings @settings-change="updateCampaignSettings" />
           </div>
         </div>
@@ -128,30 +248,66 @@ onMounted(async () => {
           <div class="mb-4 flex justify-between items-center">
             <h2 class="text-xl font-bold">Creators ({{ filteredCreators.length }})</h2>
             <div class="flex gap-2">
-              <select v-model="sortBy" class="select w-40">
+              <select 
+                v-model="sortBy" 
+                class="rounded-md border border-gray-300 px-3 py-2 text-sm"
+              >
                 <option value="matchScore">Match Score</option>
                 <option value="followers">Followers</option>
                 <option value="engagementRate">Engagement</option>
+                <option value="hourlyRate">Hourly Rate</option>
               </select>
-              <button @click="toggleSortDirection" class="btn btn-outline">
+              <button 
+                @click="toggleSortDirection" 
+                class="px-3 py-2 bg-white border border-gray-300 rounded-md"
+              >
                 {{ sortDirection === 'desc' ? '↓' : '↑' }}
               </button>
             </div>
           </div>
           
+          <!-- Loading state -->
+          <div v-if="loading" class="p-12 text-center">
+            <div class="animate-pulse">
+              <div class="h-8 bg-gray-200 rounded w-1/4 mx-auto mb-8"></div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="h-64 bg-gray-200 rounded" v-for="i in 6" :key="i"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Error state -->
+          <div v-else-if="error" class="text-center p-12 border rounded-lg bg-white">
+            <p class="text-red-500 text-lg mb-4">{{ error }}</p>
+            <button 
+              @click="fetchCreators" 
+              class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            >
+              Retry
+            </button>
+          </div>
+          
           <!-- Creator cards grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <CreatorCard 
+          <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div 
               v-for="creator in sortedCreators" 
-              :key="creator.id" 
-              :creator="creator"
-            />
+              :key="creator.id"
+              @click="openCreatorDetail(creator)"
+              class="cursor-pointer transform hover:scale-102 transition-transform duration-200"
+            >
+              <CreatorCard :creator="creator" />
+            </div>
           </div>
           
           <!-- Empty state -->
-          <div v-if="sortedCreators.length === 0" class="text-center p-12 border rounded-lg">
+          <div v-if="!loading && !error && sortedCreators.length === 0" class="text-center p-12 border rounded-lg bg-white">
             <p class="text-lg text-gray-500">No creators match your filters</p>
-            <button @click="resetFilters" class="btn btn-secondary mt-4">Reset Filters</button>
+            <button 
+              @click="resetFilters" 
+              class="mt-4 px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800"
+            >
+              Reset Filters
+            </button>
           </div>
         </div>
       </div>
@@ -162,3 +318,19 @@ onMounted(async () => {
     </footer>
   </div>
 </template>
+
+<style>
+:root {
+  --brand-purple: 104, 89, 234; /* #6859ea */
+  --brand-teal: 34, 211, 238; /* #22d3ee */
+}
+
+/* Additional global styles */
+.transform:hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.scale-102 {
+  transform: scale(1.02);
+}
+</style>

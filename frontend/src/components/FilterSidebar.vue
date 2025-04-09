@@ -22,6 +22,8 @@ const minEngagementRate = ref(0);
 const verifiedOnly = ref(false);
 const selectedRegions = ref([]);
 
+
+
 // Available regions derived from common regions in gaming
 const availableRegions = [
   'US-West', 
@@ -222,12 +224,12 @@ function emitFilterChange() {
     
     <div class="flex items-center p-6 pt-0 justify-between">
       <button
-        click="resetFilters" 
+        @click="resetFilters" 
         class="inline-flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2">
         Reset
       </button>
       <button 
-        click="applyFilters"
+        @click="applyFilters"
         class="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2">
         Apply Filters
       </button>

@@ -6,22 +6,22 @@ This document outlines the specific tasks that need to be implemented to complet
 
 ### Creator Card Component
 
-- [ ] Design and implement the Creator Card UI from scratch
-- [ ] Display essential creator information (username, platform, followers, etc.)
-- [ ] Create a visually appealing match score indicator
-- [ ] Show content categories with appropriate styling
-- [ ] Include key metrics that marketers would care about
+- [x] Design and implement the Creator Card UI from scratch
+- [x] Display essential creator information (username, platform, followers, etc.)
+- [x] Create a visually appealing match score indicator
+- [x] Show content categories with appropriate styling
+- [x] Include key metrics that marketers would care about
 - [ ] Ensure the design is responsive
 
 ### Filtering Implementation
 
 - [ ] Design and implement the FilterSidebar component UI from scratch
-- [ ] Implement platform filtering (Twitch, YouTube, TikTok)
-- [ ] Implement follower count range filtering
-- [ ] Add content category filtering
-- [ ] Add region filtering
-- [ ] Add verified status filtering
-- [ ] Implement engagement rate minimum filtering
+- [x] Implement platform filtering (Twitch, YouTube, TikTok)
+- [x] Implement follower count range filtering
+- [x] Add content category filtering
+- [x] Add region filtering
+- [x] Add verified status filtering
+- [x] Implement engagement rate minimum filtering
 - [ ] Connect the filter UI to the API endpoints
 
 ### Campaign Settings
@@ -40,7 +40,7 @@ This document outlines the specific tasks that need to be implemented to complet
 
 ### API Understanding
 
-- [ ] Review the existing backend implementation
+- [x] Review the existing backend implementation
 - [ ] Understand how the filtering API works
 - [ ] Understand the match score calculation algorithm
 
