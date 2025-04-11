@@ -15,19 +15,19 @@ This document outlines the specific tasks that need to be implemented to complet
 
 ### Filtering Implementation
 
-- [ ] Design and implement the FilterSidebar component UI from scratch
+- [x] Design and implement the FilterSidebar component UI from scratch
 - [x] Implement platform filtering (Twitch, YouTube, TikTok)
 - [x] Implement follower count range filtering
 - [x] Add content category filtering
 - [x] Add region filtering
 - [x] Add verified status filtering
 - [x] Implement engagement rate minimum filtering
-- [ ] Connect the filter UI to the API endpoints
+- [x] Connect the filter UI to the API endpoints
 
 ### Campaign Settings
 
-- [ ] Ensure campaign settings UI is well-designed
-- [ ] Make sure campaign settings affect match scores by sending to the API
+- [x] Ensure campaign settings UI is well-designed
+- [x] Make sure campaign settings affect match scores by sending to the API
 
 ### Sorting and UI Features
 
@@ -41,8 +41,8 @@ This document outlines the specific tasks that need to be implemented to complet
 ### API Understanding
 
 - [x] Review the existing backend implementation
-- [ ] Understand how the filtering API works
-- [ ] Understand the match score calculation algorithm
+- [x] Understand how the filtering API works
+- [x] Understand the match score calculation algorithm
 
 ### Match Score Algorithm Optimization
 

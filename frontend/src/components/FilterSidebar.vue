@@ -52,14 +52,21 @@ watch(
   [selectedPlatforms, selectedCategories, followerRange, minEngagementRate, verifiedOnly, selectedRegions],
   () => {
     // Debouncing is handled in the parent component
-    emitFilterChange();
+    applyFilters();
   },
   { deep: true }
 );
 
 // Apply the filters
 function applyFilters() {
-  emitFilterChange();
+  emit('filter-change', {
+    platforms: selectedPlatforms.value,
+    categories: selectedCategories.value,
+    followerRange: followerRange.value,
+    engagementRateMin: minEngagementRate.value,
+    verifiedOnly: verifiedOnly.value,
+    regions: selectedRegions.value
+  });
 }
 
 // Reset all filters
@@ -70,20 +77,9 @@ function resetFilters() {
   minEngagementRate.value = 0;
   verifiedOnly.value = false;
   selectedRegions.value = [];
-  emitFilterChange();
+  applyFilters();
 }
 
-// Emit the filter change event
-function emitFilterChange() {
-  emit('filter-change', {
-    platforms: selectedPlatforms.value,
-    categories: selectedCategories.value,
-    followerRange: followerRange.value,
-    engagementRateMin: minEngagementRate.value,
-    verifiedOnly: verifiedOnly.value,
-    regions: selectedRegions.value
-  });
-}
 </script>
 
 <template>

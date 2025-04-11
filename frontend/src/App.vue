@@ -5,6 +5,7 @@ import axios from 'axios';
 // Import components
 import AppHeader from './components/AppHeader.vue';
 import CreatorCard from './components/CreatorCard.vue';
+import CreatorDetail from './components/CreatorDetail.vue';
 import FilterSidebar from './components/FilterSidebar.vue';
 import CampaignSettings from './components/CampaignSettings.vue';
 
@@ -119,12 +120,31 @@ function setActiveTab(tab) {
 
 async function updateFilters(newFilters) {
   filters.value = { ...filters.value, ...newFilters };
+  // Show loading state
+  loading.value = true;
   try {
-    // Placeholder for the API call that would use these filters
-    // In the completed project, the intern will implement this
+    // call the backend API with the filter parameters
+    const response = await axios.get('http://localhost:3000/api/creators/filter', {
+      params: {
+        platforms: filters.platforms,
+        categories: filters.categories,
+        followerRange: filters.followerRange,
+        engagementRateMin: filters.engagementRateMin,
+        regions: filters.regions,
+        verifiedOnly: filters.verifiedOnly ? 'true' : 'false'
+      }
+    });
+    creators.value = response.data;
+    // If we have active campaign settings, calculate match scores for filtered creators
+    if (Object.keys(campaignSettings.value).length > 0) {
+      await calculateMatchScores();
+    }
     console.log('New filters:', filters.value);
   } catch (error) {
     console.error('Error applying filters:', error);
+  } finally {
+    // Hide loading state
+    loading.value = false;
   }
 }
 
@@ -168,16 +188,14 @@ function openCreatorDetail(creator) {
 // Lifecycle
 onMounted(async () => {
   try {
-    loading.value = true; //safeguard for if data is still loading
-    error.value = null;
-
-    // Fetch creators from API
-    const response = await axios.post('http://localhost:3000/api/creators',campaignSettings.value);
+    loading.value = true;
+    const response = await axios.get('http://localhost:3000/api/creators');
     creators.value = response.data;
-  } catch (error) {
-    console.error('Error fetching creators:', error);
+    updateFilters();
+    loading.value = false;
+  } catch (err) {
+    console.error('Error fetching creators:', err);
     error.value = 'Failed to load creators. Please refresh the page.';
-  } finally {
     loading.value = false;
   }
 });
