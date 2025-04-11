@@ -124,40 +124,5 @@ const platformInfo = computed(() => {
         <p class="font-bold text-lg">${{ creator.hourlyRate }}</p>
       </div>
     </div>
-    
-    <!-- Content categories -->
-    <div class="p-4 border-t">
-      <p class="text-sm text-gray-500 mb-2">Content Categories</p>
-      <div class="flex flex-wrap gap-2">
-        <span 
-          v-for="category in creator.contentCategories" 
-          :key="category"
-          class="text-xs px-2 py-1 rounded-full border"
-          :class="platformInfo.colorClass"
-        >
-          {{ category }}
-        </span>
-      </div>
-    </div>
-    
-    <!-- Demographics and location -->
-    <div class="p-4 border-t bg-gray-50">
-      <div class="grid grid-cols-2 gap-2">
-        <div>
-          <p class="text-xs text-gray-500">Top Age Group</p>
-          <p class="text-sm font-medium">
-            {{ 
-              creator.audienceDemographics ? 
-              Object.entries(creator.audienceDemographics.age)
-                .sort((a, b) => b[1] - a[1])[0][0] : 'N/A' 
-            }}
-          </p>
-        </div>
-        <div>
-          <p class="text-xs text-gray-500">Location</p>
-          <p class="text-sm font-medium">{{ creator.location }}</p>
-        </div>
-      </div>
-    </div>
   </div>
 </template>

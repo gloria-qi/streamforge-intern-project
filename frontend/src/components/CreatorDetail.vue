@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
 
+// Props to receive creator data and campaign settings
 const props = defineProps({
   creator: {
     type: Object,
@@ -162,6 +163,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    
     
     <!-- Content categories & Demographics -->
     <div class="grid md:grid-cols-2 border-t">

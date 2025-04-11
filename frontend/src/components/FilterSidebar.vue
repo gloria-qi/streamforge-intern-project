@@ -47,26 +47,17 @@ const formattedFollowerRange = computed(() => {
   }).join(' - ');
 });
 
-// Watch for changes in filter values and emit event
-watch(
-  [selectedPlatforms, selectedCategories, followerRange, minEngagementRate, verifiedOnly, selectedRegions],
-  () => {
-    // Debouncing is handled in the parent component
-    applyFilters();
-  },
-  { deep: true }
-);
-
 // Apply the filters
-function applyFilters() {
-  emit('filter-change', {
+function emitFilterChange() {
+  const filterData = {
     platforms: selectedPlatforms.value,
     categories: selectedCategories.value,
     followerRange: followerRange.value,
     engagementRateMin: minEngagementRate.value,
     verifiedOnly: verifiedOnly.value,
     regions: selectedRegions.value
-  });
+  };
+  emit('filter-change', filterData);
 }
 
 // Reset all filters
@@ -77,7 +68,7 @@ function resetFilters() {
   minEngagementRate.value = 0;
   verifiedOnly.value = false;
   selectedRegions.value = [];
-  applyFilters();
+  emitFilterChange();
 }
 
 </script>
@@ -225,7 +216,7 @@ function resetFilters() {
         Reset
       </button>
       <button 
-        @click="applyFilters"
+        @click="emitFilterChange"
         class="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2">
         Apply Filters
       </button>
