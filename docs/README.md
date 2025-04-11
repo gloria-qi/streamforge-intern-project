@@ -62,7 +62,7 @@ This project involves developing a creator matching platform with dynamic scorin
 
 A major challenge was learning Vue for the first time while balancing a busy exam schedule. This caused significant time constraints, resulting in some bugs remaining unresolved, such as issues with the narrow viewport filter sidebar and parts of the match algorithm. The trade-off was prioritizing core functionality and the ability to dynamically adjust match scores for different campaign types over bug fixes and UI polishing.
 
-I also had quite a learning curve trying to install actualy Vue ShadCN component libraries which took a lot of time, until I realized that wasn't necessary and I just needed to implement them using TailwindCSS in an efficient way. I definitely learned some new terminology and best practices along the way that I won't forget.
+I encountered a significant learning curve when attempting to integrate the VueShadCN component libraries. After struggling to install and configure them, I realized that I could effectively mimic their design and functionality using TailwindCSS. This approach not only allowed me to achieve the desired results but also helped me better understand the VueShadCN design principles and components. While I didn't use the libraries directly, I applied their underlying concepts, which was just as valuable. Through this experience, I learned new terminology, best practices, and how to efficiently create custom components with TailwindCSS, which are insights I’ll continue to apply in future projects.
 
 ### Future Improvements
 
